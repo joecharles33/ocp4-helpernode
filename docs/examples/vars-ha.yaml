@@ -1,7 +1,7 @@
 ---
 disk: vda
 helper:
-  name: "helper"
+  name: "vip"
   ipaddr: "192.168.7.77"
 dns:
   domain: "example.com"
@@ -44,8 +44,15 @@ other:
   - name: "non-cluster-vm"
     ipaddr: "192.168.7.31"
     macaddr: "52:54:00:f4:2e:2e"
-ocp_bios: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/pre-release/4.6.0-0.nightly-2020-09-29-013537/rhcos-4.6.0-0.nightly-2020-09-29-013537-x86_64-live-rootfs.x86_64.img"
-ocp_initramfs: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/pre-release/4.6.0-0.nightly-2020-09-29-013537/rhcos-4.6.0-0.nightly-2020-09-29-013537-x86_64-live-initramfs.x86_64.img"
-ocp_install_kernel: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/pre-release/4.6.0-0.nightly-2020-09-29-013537/rhcos-4.6.0-0.nightly-2020-09-29-013537-x86_64-live-kernel-x86_64"
-ocp_client: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp-dev-preview/4.6.0-0.nightly-2020-09-29-013537/openshift-client-linux-4.6.0-0.nightly-2020-09-29-013537.tar.gz"
-ocp_installer: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp-dev-preview/4.6.0-0.nightly-2020-09-29-013537/openshift-install-linux-4.6.0-0.nightly-2020-09-29-013537.tar.gz"
+    
+high_availability:
+  helpernodes:
+    - name: "helper-1"
+      ipaddr: "192.168.7.2"
+      state: MASTER
+      priority: 100
+    - name: "helper-2"
+      ipaddr: "192.168.7.3"
+      state: BACKUP
+      priority: 90
+
